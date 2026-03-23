@@ -1,6 +1,8 @@
 package fr.awa.comeat
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,11 @@ class VisuRepasActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val buttonParticiper: Button = findViewById(R.id.buttonParticiper)
+        buttonParticiper.setOnClickListener {
+            val intent = Intent(this, ConfirmationActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -15,11 +15,29 @@
         android:text="Sélection de la spécialité culinaire et de la date"
         tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/button2"
+    <Spinner
+        android:id="@+id/select_specialite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/aff_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Libellé de la spécialité et la date au format JJ/MM/AAAA"
+        android:text=""
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/select_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sélectionner date"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/btnvalider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
         tools:ignore="HardcodedText" />
 
 
