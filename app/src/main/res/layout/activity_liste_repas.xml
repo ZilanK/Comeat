@@ -5,21 +5,30 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="top|center_horizontal"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ListeRepasActivity">
+
+    <Button
+        android:id="@+id/buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Liste des repas pour lesquels l'utilisateur n'est ni l'hote ni convive"
+        android:text="Repas disponibles"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
         tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/buttonRepas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Identifiant du repas sélectionné"
-        tools:ignore="HardcodedText" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_repas_proposes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

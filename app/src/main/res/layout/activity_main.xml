@@ -7,30 +7,41 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lbl_email"
+        android:text="Comeat"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginBottom="32dp"
         tools:ignore="HardcodedText" />
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lbl_mdp"
-        tools:ignore="HardcodedText" />
+        android:text="@string/lbl_email" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_mdp" />
 
     <EditText
         android:id="@+id/mdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"/>
+        android:layout_marginBottom="24dp"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/connecter"

@@ -31,15 +31,18 @@ class MainActivity : AppCompatActivity() {
             val utilisateur = Modele.findUtilisateur(email, mdp)
 
             if (utilisateur != null) {
-                // ✅ Authentification réussie
+
+                Log.d("MODELE", "Id utilisateur : ${Modele.utilisateurConnecte?.id}")
                 Session.ouvrir(utilisateur.prenom + " " + utilisateur.nom)
                 Toast.makeText(this, "Bienvenue ${utilisateur.prenom} !", Toast.LENGTH_SHORT).show()
                 Log.d("ACT_CONN", "Connexion réussie : ${utilisateur.email}")
 
                 val intent = Intent(this, MenuRepasActivity::class.java)
+                intent.putExtra("id_utilisateur", utilisateur.id)
+                Log.d("CHAIN", "MainActivity envoie id = ${utilisateur.id}")
                 startActivity(intent)
             } else {
-                // ❌ Échec
+
                 Toast.makeText(this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show()
                 Log.d("ACT_CONN", "Échec de connexion")
             }

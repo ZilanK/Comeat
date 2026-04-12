@@ -92,22 +92,22 @@ object Modele {
     )
 
     private val repas: MutableList<Repas> = mutableListOf(
-        Repas( 1 , LocalDate.of( 2026 , 3 , 17 ) , 4 , specialites.get( 3 ) , utilisateurs.get( 1 )  ) ,
-        Repas( 2 , LocalDate.of( 2026 , 3 , 18 ) , 2 , specialites.get( 0 ) , utilisateurs.get( 0 )  ) ,
-        Repas( 3 , LocalDate.of( 2026 , 3 , 19 ) , 2 , specialites.get( 3 ) , utilisateurs.get( 3 )  ) ,
-        Repas( 4 , LocalDate.of( 2026 , 3 , 20 ) , 13 , specialites.get( 2 ) , utilisateurs.get( 2 )  ) ,
-        Repas( 5 , LocalDate.of( 2026 , 3 , 21 ) , 3 , specialites.get( 1 ) , utilisateurs.get( 1 )  ) ,
-        Repas( 6 , LocalDate.of( 2026 , 3 , 21 ) , 4 , specialites.get( 4 ) , utilisateurs.get( 4 )  ) ,
-        Repas( 7 , LocalDate.of( 2026 , 3 , 21 ) , 4 , specialites.get( 5 ) , utilisateurs.get( 1 )  )
+        // Lagertha organise un repas Espagnol le 17 mai 2026 pour 4 personnes. (le premier)
+        Repas( 1 , LocalDate.of( 2026 , 5 , 17 ) , 4 , specialites.get( 3 ) , utilisateurs.get( 1 )  ) ,
+        Repas( 2 , LocalDate.of( 2026 , 5 , 18 ) , 2 , specialites.get( 0 ) , utilisateurs.get( 0 )  ) ,
+        Repas( 3 , LocalDate.of( 2026 , 5 , 19 ) , 2 , specialites.get( 3 ) , utilisateurs.get( 3 )  ) ,
+        Repas( 4 , LocalDate.of( 2026 , 5 , 20 ) , 13 , specialites.get( 2 ) , utilisateurs.get( 2 )  ) ,
+        Repas( 5 , LocalDate.of( 2026 , 5 , 21 ) , 3 , specialites.get( 1 ) , utilisateurs.get( 1 )  ) ,
+        Repas( 6 , LocalDate.of( 2026 , 5 , 21 ) , 4 , specialites.get( 4 ) , utilisateurs.get( 4 )  ) ,
+        Repas( 7 , LocalDate.of( 2026 , 5 , 21 ) , 4 , specialites.get( 5 ) , utilisateurs.get( 1 )  )
     )
-
     init {
-
+        // les convives
         repas.get(0).inscrire( utilisateurs.get( 12 ) )
         repas.get(0).inscrire( utilisateurs.get( 7 ) )
         repas.get(0).inscrire( utilisateurs.get( 3 ) )
 
-        repas.get(1).inscrire( utilisateurs.get( 10 ) )
+        repas.get(1).inscrire( utilisateurs.get( 1) )
         repas.get(1).inscrire( utilisateurs.get( 7 ) )
 
         repas.get(2).inscrire( utilisateurs.get( 4 ) )
@@ -115,6 +115,8 @@ object Modele {
         repas.get(3).inscrire( utilisateurs.get( 5 ) )
     }
 
+
+    var utilisateurConnecte : Utilisateur? = null
 
     // Méthode utilisée dans l'activité MainActivity
 
@@ -208,6 +210,13 @@ object Modele {
         return null
     }
 
+    fun inscrire( idRepas: Int, idUtilisateur: Int ): Boolean {
+        val unRepas = getRepasById( idRepas ) ?: return false
+        val unUtilisateur = getUtilisateur( idUtilisateur ) ?: return false
+        unRepas.inscrire( unUtilisateur )
+        return true
+    }
+
     fun getRepasUtilisateurConvive( idUtilisateur: Int ): List<Repas> {
 
         val repasSelect: MutableList<Repas> = mutableListOf()
@@ -219,9 +228,5 @@ object Modele {
         }
 
         return repasSelect
-
     }
 }
-
-
-

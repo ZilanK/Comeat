@@ -2,6 +2,7 @@ package fr.awa.comeat
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,20 +20,22 @@ class MenuRepasActivity : AppCompatActivity() {
             insets
         }
 
-        val button3 : Button = findViewById(R.id.button3)
-        button3.setOnClickListener {
+        val idUtilisateur = intent.getIntExtra("id_utilisateur", -1)
+        Log.d("CHAIN", "MenuRepasActivity reçoit id = $idUtilisateur")
+
+        val buttonMesParticipations : Button = findViewById(R.id.buttonMesParticipations)
+        buttonMesParticipations.setOnClickListener {
             val intent = Intent(this, RepasActivity::class.java)
+            intent.putExtra("id_utilisateur", idUtilisateur)
+            Log.d("CHAIN", "MenuRepasActivity envoie id = $idUtilisateur vers RepasActivity")
             startActivity(intent)
-
         }
 
-        val button2 : Button = findViewById(R.id.button2)
-        button2.setOnClickListener {
+        val buttonRepasProposes : Button = findViewById(R.id.buttonRepasProposes)
+        buttonRepasProposes.setOnClickListener {
             val intent = Intent(this, RechecheRepasActivity::class.java)
+            intent.putExtra("id_utilisateur", idUtilisateur)
             startActivity(intent)
-
         }
-
-
     }
 }

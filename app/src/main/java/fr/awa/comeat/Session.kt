@@ -1,3 +1,5 @@
+package fr.awa.comeat
+
 object Session {
 
     private var nom : String? = null

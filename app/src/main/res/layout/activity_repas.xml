@@ -8,12 +8,29 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".RepasActivity">
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Liste des repas à venir auxquels est inscrit l'utilisateur"
-      tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        tools:ignore="HardcodedText" />
 
-  </LinearLayout>
+    <TextView
+        android:id="@+id/text_repas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mes repas à venir"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_repas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

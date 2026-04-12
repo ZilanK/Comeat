@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,7 +17,6 @@ import androidx.core.view.WindowInsetsCompat
 import fr.awa.comeat.Modele.Modele
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import android.widget.Toast
 
 class RechecheRepasActivity : AppCompatActivity() {
 
@@ -32,6 +32,8 @@ class RechecheRepasActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val idUtilisateur = intent.getIntExtra("id_utilisateur", -1)
 
         // Spinner spécialités
         val specialites = Modele.getSpecialites()
@@ -50,10 +52,7 @@ class RechecheRepasActivity : AppCompatActivity() {
                 ) {
                     libelleSpecialiteCulinaire = specialites[position].libelle
                 }
-
-                override fun onNothingSelected(parentView: AdapterView<*>) {
-                    // Obligatoire mais on ne fait rien ici
-                }
+                override fun onNothingSelected(parentView: AdapterView<*>) {}
             }
 
         // Bouton date
@@ -62,10 +61,6 @@ class RechecheRepasActivity : AppCompatActivity() {
 
         btnDate.setOnClickListener {
             val dateCourante = LocalDate.now()
-            val annee = dateCourante.year
-            val mois = dateCourante.monthValue - 1
-            val jour = dateCourante.dayOfMonth
-
             val datePickerDialog = DatePickerDialog(
                 this,
                 { _, anneeSelect, moisSelect, jourSelect ->
@@ -74,7 +69,7 @@ class RechecheRepasActivity : AppCompatActivity() {
                     date_repas = dateSelectionnee.format(formateur)
                     tvDate.text = date_repas
                 },
-                annee, mois, jour
+                dateCourante.year, dateCourante.monthValue - 1, dateCourante.dayOfMonth
             )
             datePickerDialog.show()
         }
@@ -86,9 +81,12 @@ class RechecheRepasActivity : AppCompatActivity() {
                 Toast.makeText(this, "Veuillez sélectionner une date", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, ListeRepasActivity::class.java)
+                intent.putExtra("id_utilisateur", idUtilisateur)       // ✅ transmet l'id
+                intent.putExtra("specialite", libelleSpecialiteCulinaire) // ✅ transmet la spécialité
+                intent.putExtra("date_repas", date_repas)               // ✅ transmet la date
                 startActivity(intent)
             }
         }
 
-    } // ferme onCreate
-} // ferme la classe
+    }
+}

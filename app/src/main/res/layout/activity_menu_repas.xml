@@ -7,28 +7,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="16dp"
     tools:context=".MenuRepasActivity">
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Menu"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginBottom="32dp"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonRepasProposes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Les repas proposés"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonMesParticipations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mes participations"
-
- />
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
